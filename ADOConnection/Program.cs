@@ -1,6 +1,7 @@
 ﻿using ADOConnection.Mappers;
 using ADOConnection.Services;
 using ADOConnection.Settings;
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
 using System.Configuration;
@@ -29,8 +30,10 @@ public class Program
             .AddSingleton<IWorkflowService, WorkflowService>()
             .AddSingleton<IApplicationSettings, ApplicationSettings>();
 
-        MappingProfile
-        // Auto Mapper COnfigurations
-
+        // Auto Mapper Configurations
+        var mapperConfig = new MapperConfiguration(mc =>
+        {
+                mc.AddProfile(new MappingProfile());
+        });           
     }
 }
